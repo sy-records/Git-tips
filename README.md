@@ -20,12 +20,12 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 ## 生成SSH秘钥
 ### 配置
 ```sh
-git config –global user.name ‘username’  #你的昵称
-git config –global user.email ‘username@domain.com’  #你的邮箱
+$ git config –global user.name ‘username’  #你的昵称
+$ git config –global user.email ‘username@domain.com’  #你的邮箱
 ```
 ### 生成秘钥
 ```sh
-ssh-keygen -t rsa -C ‘username@domain.com'  #上面的邮箱
+$ ssh-keygen -t rsa -C ‘username@domain.com'  #上面的邮箱
 ```
 
 ## 展示帮助信息
