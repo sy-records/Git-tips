@@ -21,6 +21,7 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 ### 配置
 ```sh
 $ git config –global user.name ‘username’  #你的昵称
+
 $ git config –global user.email ‘username@domain.com’  #你的邮箱
 ```
 ### 生成秘钥
@@ -105,4 +106,114 @@ $ git commit --amend
 ## 查看commit历史
 ```sh
 $ git log
+```
+
+## 快速切换分支
+```sh
+$ git checkout - #分支名
+```
+
+## 删除已经合并到master的分支
+```sh
+$ git branch --merged master | grep -v '^\*\|  master' | xargs -n 1 git branch -d
+```
+
+## 展示本地分支关联远程仓库的情况
+```sh
+$ git branch -vv
+```
+
+## 关联远程分支
+关联远程分支之后，使用`git branch -vv`就可以展示关联的远程分支名
+同时推送到远程仓库直接使用：`git push`，就不需要指定远程仓库了
+```sh
+$ git branch -u origin/mybranch #分支名
+```
+
+或者在push的时候加上`-u`参数
+```sh
+$ git push origin/mybranch -u
+```
+
+## 列出所有远程分支
+```sh
+$ git branch -r #-r参数相当于：--remote
+```
+
+## 列出本地和远程分支
+```sh
+$ git branch -a #-a参数相当于：--all
+```
+
+## 创建并切换到本地分支
+```sh
+$ git checkout -b <branch-name>
+```
+
+## 创建并切换到远程分支
+```sh
+$ git checkout -b <branch-name> origin/<branch-name>
+```
+
+## 删除本地分支
+```sh
+$ git branch -d <local-branchname>
+```
+
+## 删除远程分支
+```sh
+$ git push origin --delete <remote-branchname>
+```
+
+或者  
+```sh
+$ git push origin :<remote-branchname>
+```
+
+## 重命名本地分支
+```sh
+$ git branch -m <new-branch-name>
+```
+
+## 查看标签
+```sh
+$ git tag #查看所有标签
+
+#展示当前分支的最近的tag
+$ git describe --tags --abbrev=0 #没有标签会提示fatal: No names found, cannot describe anything.
+```
+
+## 本地创建标签
+```sh
+$ git tag <version-number> #如v1.0
+
+#默认tag是打在最近的一次commit上，如果需要指定commit打tag
+$ git tag -a <version-number> -m "v1.0 发布(描述)" <commit-id> #commit-id可忽略
+```
+
+## 推送标签到远程仓库
+```sh
+#要保证本地创建好了标签才可以推送标签到远程仓库：
+$ git push origin <local-version-number>
+
+#一次性推送所有标签，同步到远程仓库：
+$ git push origin --tags
+```
+
+## 删除本地标签
+```sh
+$ git tag -d <tag-name>
+```
+
+## 删除远程标签
+```sh
+#删除远程标签需要先删除本地标签，然后再执行下面的命令：
+$ git push origin :refs/tags/<tag-name>
+```
+
+## 切回到某个标签
+一般上线之前都会打tag，就是为了防止上线后出现问题，方便快速回退到上一版本
+```sh
+#下面的命令是回到某一标签下的状态：
+$ git checkout -b <branch-name> <tag-name> #分支名 #标签名
 ```
