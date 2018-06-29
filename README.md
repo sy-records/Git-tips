@@ -76,6 +76,33 @@ $ git reset --hard commitID
 
 ## 重设第一个commit
 ```sh
-#也就是把所有的改动都重新放回工作区，并**清空所有的commit**，这样就可以重新提交第一个commit了
-git update-ref -d HEAD
+#也就是把所有的改动都重新放回工作区，并清空所有的commit，这样就可以重新提交第一个commit了
+$ git update-ref -d HEAD
+```
+
+## 回到某一个commit的状态，并重新增加一个commit
+```sh
+$ git revert <commit-id>
+```
+
+## 回到某个commit的状态，并删除后面的commit
+和revert的区别：reset命令会抹去某个commit id之后的所有commit
+```sh
+$ git reset <commit-id>  #默认就是-mixed参数。
+
+$ git reset –mixed HEAD^  #回退至上个版本，它将重置HEAD到另外一个commit,并且重置暂存区以便和HEAD相匹配，但是也到此为止。工作区不会被更改。
+
+$ git reset –soft HEAD~3  #回退至三个版本之前，只回退了commit的信息，暂存区和工作区与回退之前保持一致。如果还要提交，直接commit即可   
+
+$ git reset –hard <commit-id>  #彻底回退到指定commit-id的状态，暂存区和工作区也会变为指定commit-id版本的内容
+```
+
+## 修改上一个commit的描述
+```sh
+$ git commit --amend
+```
+
+## 查看commit历史
+```sh
+$ git log
 ```
