@@ -30,7 +30,7 @@ ssh-keygen -t rsa -C ‘username@domain.com'  #上面的邮箱
 
 ## 展示帮助信息
 ```sh
-git help -g
+$ git help -g
 ```
 
 ## 添加暂存区
