@@ -73,3 +73,9 @@ $ git log
 #在使用reset撤销
 $ git reset --hard commitID
 ```
+
+## 重设第一个commit
+```sh
+#也就是把所有的改动都重新放回工作区，并**清空所有的commit**，这样就可以重新提交第一个commit了
+git update-ref -d HEAD
+```
