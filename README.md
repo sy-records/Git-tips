@@ -32,7 +32,7 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 * [回到某个commit的状态，并删除后面的commit](#回到某个commit的状态，并删除后面的commit)
 * [修改上一个commit的描述](#修改上一个commit的描述)
 * [commit历史中显示Branch1有的，但是Branch2没有commit](#commit历史中显示Branch1有的，但是Branch2没有commit)
-* [在commit log中显示GPG签名](#在commit log中显示GPG签名)
+* [在commit log中显示GPG签名](#在commit-log中显示GPG签名)
 * [展示简化的commit历史](#展示简化的commit历史)
 * [查看commit历史](#查看commit历史)
 * [在commit log中查找相关内容](#log中查找相关内容)
