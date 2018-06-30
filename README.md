@@ -17,21 +17,47 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 
 参考[tips](https://github.com/git-tips/tips)项目，和廖雪峰老师的[git网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)。
 
+
+下面的内容就是列举了一些常用的Git命令和小技巧
+
+
+## 目录
+
+
+
 ## 生成SSH秘钥
+
 ### 配置
 ```sh
 $ git config –global user.name "username"  #你的昵称
 
-$ git config –global user.email "username@domain.com"  #你的邮箱
+$ git config –global user.email "email@address.com"  #你的邮箱
 ```
+
 ### 生成秘钥
 ```sh
-$ ssh-keygen -t rsa -C "username@domain.com"  #上面的邮箱
+$ ssh-keygen -t rsa -C "email@address.com"  #上面的邮箱
+```
+
+## 删除全局设置
+```sh
+$ git config --global --unset <entry-name>
 ```
 
 ## 展示帮助信息
 ```sh
 $ git help -g
+```
+
+## clone项目
+```sh
+$ git clone https://github.com/user/repo.git  # Use HTTPS
+$ git clone git@github.com:user/repo.git  # Use SSH
+```
+
+## clone下来指定的单一分支
+```sh
+$ git clone -b <branch-name> --single-branch https://github.com/user/repo.git
 ```
 
 ## 添加暂存区
@@ -63,16 +89,7 @@ $ git pull
 
 ## 显示修改的文件
 ```sh
-$ git log --name-only
-```
-
-## 撤销commit
-```sh
-#先git log查看log信息
 $ git log
-
-#在使用reset撤销
-$ git reset --hard commitID
 ```
 
 ## 重设第一个commit
@@ -87,7 +104,7 @@ $ git revert <commit-id>
 ```
 
 ## 回到某个commit的状态，并删除后面的commit
-和revert的区别：reset命令会抹去某个commit id之后的所有commit
+和revert的区别是：reset命令会抹去某个commit id之后的所有commit
 ```sh
 $ git reset <commit-id>  #默认就是-mixed参数。
 
@@ -103,9 +120,30 @@ $ git reset –hard <commit-id>  #彻底回退到指定commit-id的状态，暂�
 $ git commit --amend
 ```
 
+## commit历史中显示Branch1有的，但是Branch2没有commit
+```sh
+$ git log Branch1 ^Branch2
+```
+
+## 在commit log中显示GPG签名
+```sh
+$ git log --show-signature
+```
+
+## 展示简化的commit历史
+```sh
+$ git log --pretty=oneline --graph --decorate --all
+```
+
 ## 查看commit历史
 ```sh
 $ git log
+```
+
+## 在commit log中查找相关内容
+```sh
+#通过grep查找，given-text：所需要查找的字段
+$ git log --all --grep='<given-text>'
 ```
 
 ## 快速切换分支
@@ -175,6 +213,11 @@ $ git push origin :<remote-branchname>
 $ git branch -m <new-branch-name>
 ```
 
+## 展示任意分支某一文件的内容
+```sh
+$ git show <branch-name>:<file-name>
+```
+
 ## 查看标签
 ```sh
 $ git tag #查看所有标签
@@ -217,3 +260,220 @@ $ git push origin :refs/tags/<tag-name>
 #下面的命令是回到某一标签下的状态：
 $ git checkout -b <branch-name> <tag-name> #分支名 #标签名
 ```
+
+## 放弃工作区的修改
+```sh
+$ git checkout -- <file-name>
+
+#放弃所有的修改
+$ git checkout .
+```
+
+## 放弃已经提交到暂存区的
+```sh
+$ git reset HEAD <file-name>
+```
+
+## 删除文件
+```sh
+$ rm <file-name> #只删除工作区的文件
+
+$ git rm <file-name> #删除暂存区中的文件
+
+$ git rm -f <file-name> #同时删除工作区和暂存区中的文件
+
+$ git rm --cached <file-name> #删除暂存区的文件，不删除工作区的文件
+```
+
+## 查看某段代码是谁写的
+```sh
+$ git blame <file-name>
+```
+
+## 显示本地执行过git命令
+```
+$ git reflog
+```
+
+## 修改作者名
+```sh
+$ git commit --amend --author='Author Name <email@address.com>'
+```
+
+## 修改远程仓库的url
+```sh
+$ git remote set-url origin <URL>
+```
+
+## 增加远程仓库
+```sh
+$ git remote add origin <remote-url>
+```
+
+## 列出所有远程仓库
+```sh
+$ git remote
+```
+
+## 从远程仓库根据ID，拉下某一状态，到本地分支
+```sh
+$ git fetch origin pull/<id>/head:<branch-name>
+```
+
+## 查看两个星期内的改动
+```sh
+$ git whatchanged --since='2 weeks ago'
+```
+
+## 把A分支的某一个commit，放到B分支上
+```sh
+$ git checkout <branch-name> && git cherry-pick <commit-id>
+```
+
+## 新建并切换到新分支上，同时这个分支没有任何commit
+```sh
+#相当于保存修改，但是重写commit历史
+$ git checkout --orphan <branch-name>
+```
+
+## 给git命令起别名
+```sh
+$ git config --global alias.<handle> <command>
+
+#比如：git status 改成 git st
+$ git config --global alias.st status
+```
+
+## 存储当前的修改，但不用提交commit
+```sh
+$ git stash
+```
+
+## 保存当前状态，包括untracked的文件
+```sh
+$ git stash -u
+```
+
+## 展示所有stashes
+```sh
+$ git stash list
+```
+
+## 回到某个stash的状态
+```sh
+$ git stash apply <stash@{n}>
+```
+
+## 回到最后一个stash的状态，并删除这个stash
+```sh
+$ git stash pop
+```
+
+## 删除所有的stash
+```sh
+$ git stash clear
+```
+
+## 从stash中拿出某个文件的修改
+```sh
+$ git checkout <stash@{n}> -- <file-path>
+```
+
+## 展示所有tracked的文件
+```sh
+$ git ls-files -t
+```
+
+## 展示所有untracked的文件
+```sh
+$ git ls-files --others
+```
+
+## 展示所有忽略的文件
+```sh
+$ git ls-files --others -i --exclude-standard
+```
+
+## 强制删除untracked的文件
+```sh
+#可以用来删除新建的文件。如果不指定文件文件名，则清空所有工作的untracked文件
+$ git clean <file-name> -f
+```
+
+## 强制删除untracked的目录
+```sh
+#可以用来删除新建的目录，这个命令也可以用来删除untracked的文件
+$ git clean <directory-name> -df
+```
+
+## 把某一个分支到导出成一个文件
+```sh
+$ git bundle create <file> <branch-name>
+```
+
+## 从包中导入分支
+```sh
+#新建一个分支，分支内容就是上面bundle create命令导出的内容
+$ git clone repo.bundle <repo-dir> -b <branch-name>
+```
+
+## 执行rebase之前自动stash
+```sh
+$ git rebase --autostash
+```
+
+## 详细展示一行中的修改
+```sh
+$ git diff --word-diff
+```
+
+## 清除gitignore文件中记录的文件
+```sh
+$ git clean -X -f
+```
+
+## 展示所有alias和configs
+```sh
+#默认为当前目录的config
+$ git config --local --list (当前目录)
+$ git config --global --list (全局)
+```
+
+## 展示忽略的文件
+```sh
+$ git status --ignored
+```
+
+## 忽略某个文件的改动
+```sh
+#关闭 track 指定文件的改动，也就是 Git 将不会在记录这个文件的改动
+$ git update-index --assume-unchanged path/to/file
+
+#恢复 track 指定文件的改动
+$ git update-index --no-assume-unchanged path/to/file
+```
+
+## 忽略文件的权限变化
+```sh
+#不再将文件的权限变化视作改动
+$ git config core.fileMode false
+```
+
+## 以最后提交的顺序列出所有Git分支
+```sh
+# 最新的放在最上面   
+$ git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/
+```
+
+## 把暂存区的指定文件放到工作区中
+```sh
+#不添加参数，默认是-mixed
+$ git reset <file-name>
+```
+
+## 强制推送
+```sh
+$ git push -f <remote-name> <branch-name>
+```
+
+**[⬆ 返回顶部](#目录)**
