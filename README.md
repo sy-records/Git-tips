@@ -20,13 +20,13 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 ## 生成SSH秘钥
 ### 配置
 ```sh
-$ git config –global user.name ‘username’  #你的昵称
+$ git config –global user.name "username"  #你的昵称
 
-$ git config –global user.email ‘username@domain.com’  #你的邮箱
+$ git config –global user.email "username@domain.com"  #你的邮箱
 ```
 ### 生成秘钥
 ```sh
-$ ssh-keygen -t rsa -C ‘username@domain.com'  #上面的邮箱
+$ ssh-keygen -t rsa -C "username@domain.com"  #上面的邮箱
 ```
 
 ## 展示帮助信息
@@ -36,10 +36,10 @@ $ git help -g
 
 ## 添加暂存区
 ```sh
-#把工作时的所有变化提交到暂存区，包括文件内容修改(modified)以及新文件(new)，但不包括被删除的文件。
+#把工作时的所有变化提交到暂存区
 $ git add .   
 
-#仅监控已经被add的文件,不会提交新文件（untracked file）
+#更新已经提交到暂存区的文件（git add --update的缩写）
 $ git add -u
 
 #是上面两个功能的合集（git add --all的缩写）
