@@ -14,14 +14,9 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
     * 分支：Git鼓励你使用`branch`完成某个任务，合并后再删掉分支，过程更安全。
     * commit-id：输出命令：`git log`，最上面那行`commit xxxxxx`，后面的字符串就是commit-id
 
+下面的内容就是列举了一些常用的Git命令和小技巧，参考[tips](https://github.com/git-tips/tips)项目，和廖雪峰老师的[git网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)。
 
-参考[tips](https://github.com/git-tips/tips)项目，和廖雪峰老师的[git网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)。
-
-
-下面的内容就是列举了一些常用的Git命令和小技巧
-
-
-## 目录
+[TOC]
 
 
 
