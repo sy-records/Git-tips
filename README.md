@@ -98,9 +98,9 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 
 ### 配置
 ```sh
-$ git config –-global user.name "username"  #你的昵称
+$ git config --global user.name "username"  #你的昵称
 
-$ git config –-global user.email "email@address.com"  #你的邮箱
+$ git config --global user.email "email@address.com"  #你的邮箱
 ```
 
 ### 生成秘钥
