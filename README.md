@@ -17,7 +17,7 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 下面的内容就是列举了一些常用的Git命令和小技巧，参考[tips](https://github.com/git-tips/tips)项目，和廖雪峰老师的[git网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
 
 ## 目录
-* [生成SSH秘钥](#生成SSH秘钥)
+* [生成SSH密钥](#生成SSH密钥)
 * [删除全局设置](#删除全局设置)
 * [展示帮助信息](#展示帮助信息)
 * [clone项目](#clone项目)
@@ -94,17 +94,13 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 * [强制推送](#强制推送)
 * [单独合并某次提交](#单独合并某次提交)
 
-## 生成SSH秘钥
+## 生成SSH密钥
 
-### 配置
 ```sh
+# 全局配置
 $ git config --global user.name "username"  #你的昵称
-
 $ git config --global user.email "email@address.com"  #你的邮箱
-```
-
-### 生成秘钥
-```sh
+# 生成密钥
 $ ssh-keygen -t rsa -C "email@address.com"  #上面的邮箱
 ```
 
