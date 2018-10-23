@@ -65,7 +65,6 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
 * [列出所有远程仓库](#列出所有远程仓库)
 * [从远程仓库根据ID，拉下某一状态，到本地分支](#从远程仓库根据ID，拉下某一状态，到本地分支)
 * [查看两个星期内的改动](#查看两个星期内的改动)
-* [把A分支的某一个commit，放到B分支上](#把A分支的某一个commit，放到B分支上)
 * [新建并切换到新分支上，同时这个分支没有任何commit](#新建并切换到新分支上，同时这个分支没有任何commit)
 * [给git命令起别名](#给git命令起别名)
 * [存储当前的修改，但不用提交commit](#存储当前的修改，但不用提交commit)
@@ -388,11 +387,6 @@ $ git fetch origin pull/<id>/head:<branch-name>
 ## 查看两个星期内的改动
 ```sh
 $ git whatchanged --since='2 weeks ago'
-```
-
-## 把A分支的某一个commit，放到B分支上
-```sh
-$ git checkout <branch-name> && git cherry-pick <commit-id>
 ```
 
 ## 新建并切换到新分支上，同时这个分支没有任何commit
