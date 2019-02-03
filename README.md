@@ -1,5 +1,3 @@
-![](http://oo8jzybo8.bkt.clouddn.com/hello-github.jpg)
-
 ## GitHub介绍
 GitHub 是为开发者提供 Git 仓库的托管服务。这是一个让开发者与朋友、同事、同学及陌生人共享代码的完美场所。总结一下，GitHub 最大的特征是“面向人”
 
@@ -15,6 +13,10 @@ Git是一个“**分布式版本管理工具**”，简单的理解版本管理�
     * commit-id：输出命令：`git log`，最上面那行`commit xxxxxx`，后面的字符串就是commit-id
 
 下面的内容就是列举了一些常用的Git命令和小技巧，参考[tips](https://github.com/git-tips/tips)项目，和廖雪峰老师的[git网站](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000)
+
+## Git 命令速查图 
+
+![](https://ws1.sinaimg.cn/large/40dfde6fly1fzs412pdr5j21iw100gww.jpg)
 
 ## 目录
 * [生成SSH密钥](#生成SSH密钥)
