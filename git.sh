@@ -7,7 +7,6 @@ case $2 in
         echo "This is the git used at work.";
         git config user.name ""
         git config user.email ""
-        ssh-keygen -t rsa -C ""
         ;;
     github)
         echo "This is the git used at github.";
