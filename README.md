@@ -107,7 +107,7 @@ $ ssh-keygen -t rsa -C "email@address.com"  #上面的邮箱
 
 ## 删除全局设置
 ```sh
-$ git config --global --unset <entry-name>
+$ git config --global --unset <entry-name> # {user.name|user.email}
 ```
 
 ## 展示帮助信息
